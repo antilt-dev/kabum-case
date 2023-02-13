@@ -10,8 +10,8 @@ export class AdminsDatabase extends BaseDatabase{
     public async getById(id:string):Promise<AdminDTO>{
         return super.getById(id)
     }
-    public async create(item:any):Promise<void>{
-        await super.create(item)
+    public async create(newAdmin:AdminDTO):Promise<void>{
+        await super.create(newAdmin)
     }
     public async deleteById(id:string):Promise<void>{
         await super.deleteById(id)
