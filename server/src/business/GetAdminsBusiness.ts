@@ -1,7 +1,7 @@
 import { AdminDTO } from "../models/AdminDTO";
 import { AdminsRepository } from "./AdminsRepository";
 
-export class GetClientsBusiness{
+export class GetAdminsBusiness{
     constructor(
         private clientsDatabase:AdminsRepository
     ){}
