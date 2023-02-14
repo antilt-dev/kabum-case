@@ -6,4 +6,5 @@ export interface AdminsRepository{
     create(item:any):Promise<void>
     deleteById(id:string):Promise<void>
     update(id:string,newValues:any):Promise<void>
+    getByEmail(email:string):Promise<AdminDTO[]>
 }

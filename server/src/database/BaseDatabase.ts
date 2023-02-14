@@ -18,12 +18,9 @@ export abstract class BaseDatabase{
 
     abstract TABLE_NAME:string;
 
-    protected async getAll(query?:string,sort?:string,order?:string):Promise<any>{
-        const sortItems = sort || "%"
+    protected async getAll():Promise<any>{
         const result = await BaseDatabase.connection(this.TABLE_NAME)
         .select()
-        .where("name","like",`%${query}%`)
-        .orderBy(sortItems,order);
         return result
     }
 

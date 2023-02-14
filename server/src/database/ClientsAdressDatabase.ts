@@ -1,7 +1,7 @@
 import { ClientAddressDTO } from "../models/ClientAddressDTO";
 import { BaseDatabase } from "./BaseDatabase";
 
-export class AdminsDatabase extends BaseDatabase{
+export class ClientsAdressDatabase extends BaseDatabase{
     TABLE_NAME = "clients_address"
 
     public async getById(id:string):Promise<ClientAddressDTO>{

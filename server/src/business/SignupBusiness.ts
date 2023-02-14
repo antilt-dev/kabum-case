@@ -1,16 +1,16 @@
 import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
-import { ClientsRepository } from "./ClientsRepository";
+import { AdminsRepository } from "./AdminsRepository";
 import { CreateAdminDTO } from "../models/CreateAdminDTO";
 import { generateId } from "../services/generateId";
 import { CustomError } from "../services/CustomError";
 
 export class SignupBusiness{
     constructor(
-        private ClientsDatabse:ClientsRepository
+        private AdminsDatabase:AdminsRepository
     ){}
     public signup = async (newAdmin:CreateAdminDTO) =>{
-        const {email,name,password} = newAdmin
+        let {email,name,password} = newAdmin
         const id = generateId() as string
         let statusCode = 500
         
@@ -22,6 +22,10 @@ export class SignupBusiness{
             statusCode = 412
             throw new CustomError(statusCode,'É necessário informar o email do administrador.')
         }
+        
+        email = email.toLowerCase()
+        name = name.toUpperCase()
+
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
         if (!passwordRegex.test(password)) {
@@ -30,7 +34,7 @@ export class SignupBusiness{
         }
         const hashManager = new HashManager()
         const hashPassword = await hashManager.hash(password)
-        await this.ClientsDatabse.create({
+        await this.AdminsDatabase.create({
             name,
             email,
             id,
