@@ -1,14 +1,13 @@
 import { ClientsRepository } from "./ClientsRepository";
 import { Authenticator } from "../services/Authenticator";
 import { CustomError } from "../services/CustomError";
-import { ClientDTO } from "../models/ClientDTO";
-import { AddressDatabase } from "../database/AddressDatabase";
+import { AddressRepository } from "./AddressRepository";
 
 
 export class DeleteClientBusiness{
     constructor(
         private clientsDatabase:ClientsRepository,
-        private addressDatabase:AddressDatabase
+        private addressDatabase:AddressRepository
     ){}
     public deleteClient = async (cpf:string,token:string)=>{
         let statusCode = 500
@@ -37,7 +36,7 @@ export class DeleteClientBusiness{
                 throw new CustomError(statusCode,"Não foi encontrado nenhum cliente com este CPF.")
             }
 
-            await this.addressDatabase.deleteByCpf(cpf)
+            await this.addressDatabase.deleteBtCpf(cpf)
             
             await this.clientsDatabase.deleteByCpf(cpf)
         }catch(error:any){
