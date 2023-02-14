@@ -15,7 +15,7 @@ export class LoginController{
                 password
             }
             const token = await this.loginBusiness.login(input)
-            res.status(201).send(token);
+            res.status(201).send(`Access Token: ${token}`);
           
         } catch (error:any) {
             return res.status(400).send({

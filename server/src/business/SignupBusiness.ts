@@ -9,10 +9,23 @@ export class SignupBusiness{
     constructor(
         private AdminsDatabase:AdminsRepository
     ){}
-    public signup = async (newAdmin:CreateAdminDTO) =>{
-        
+    public signup = async (creatorToken:string,newAdmin:CreateAdminDTO) =>{
         let statusCode = 500
         try {
+            const authenticator = new Authenticator() 
+
+            if(!creatorToken){
+                statusCode = 412
+                throw new CustomError(statusCode,'É necessário informar o token de acesso!')
+            }
+
+            const verifyToken = authenticator.verifyToken(creatorToken)
+            
+            if(!verifyToken){
+                statusCode = 401
+                throw new CustomError(statusCode,"Você não tem permissão para acessar estes dados!")
+            }
+
             let {email,name,password} = newAdmin
             const id = generateId() as string
             if(!name){
@@ -41,7 +54,6 @@ export class SignupBusiness{
                 id,
                 password:hashPassword
             })
-            const authenticator = new Authenticator()
             const token = authenticator.generateToken(id)
             return token
     

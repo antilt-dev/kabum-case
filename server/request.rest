@@ -1,9 +1,10 @@
 POST http://localhost:3003/signup/
 Content-Type: application/json
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjM5NjEwNywiZXhwIjoxNjc2Mzk5NzA3fQ.KuzS-DHB8EoM4v3E1s6OvBveQg4Vk9HmajCatUx8VQM
 
 {
     "name":"Admin",
-    "email":"newdev@kabum.com.br",
+    "email":"onemore@kabum.com.br",
     "password":"123Kabum@"
 }
 ###
