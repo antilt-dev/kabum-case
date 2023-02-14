@@ -23,4 +23,9 @@ export class AddressDatabase extends BaseDatabase{
 
         return result
     }
+    public async deleteByCpf(cpf:string):Promise<void>{
+        await BaseDatabase.connection(this.TABLE_NAME)
+        .delete()
+        .where({client_cpf:cpf})
+    }
 }

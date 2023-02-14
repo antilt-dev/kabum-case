@@ -1,6 +1,6 @@
 POST http://localhost:3003/signup/
 Content-Type: application/json
-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjM5NjEwNywiZXhwIjoxNjc2Mzk5NzA3fQ.KuzS-DHB8EoM4v3E1s6OvBveQg4Vk9HmajCatUx8VQM
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjQwMDAzOSwiZXhwIjoxNjc2NDAzNjM5fQ.iSuRPotjVpqvzE7NLt550kKlFJ2vmy_IOu538jyOXF0
 
 {
     "name":"Admin",
@@ -21,4 +21,13 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3003/admins/getAll
-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjM5NTE3NiwiZXhwIjoxNjc2Mzk4Nzc2fQ.O7oLFvAgBTuQ44RQ2_lO1RHfp1f_nPX8Eer9CrNofhU
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjQwMDAzOSwiZXhwIjoxNjc2NDAzNjM5fQ.iSuRPotjVpqvzE7NLt550kKlFJ2vmy_IOu538jyOXF0
+
+###
+DELETE http://localhost:3003/clients/delete
+Content-Type: application/json
+auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjQwMjIzMCwiZXhwIjoxNjc2NDA1ODMwfQ.HYyom1ZoEyX-uQOXIqYYfBiBLnloKwGWeUyOkAW-PhY
+
+{
+    "cpf":"2355202200"
+}

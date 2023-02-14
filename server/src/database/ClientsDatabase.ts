@@ -7,16 +7,24 @@ export class ClientsDatabase extends BaseDatabase{
     public async getAll():Promise<ClientDTO[]>{
         return super.getAll()
     }
-    public async getById(id:string):Promise<ClientDTO>{
-        return super.getById(id)
+    public async getByCpf(cpf:string):Promise<ClientDTO[]>{
+        const result = BaseDatabase.connection(this.TABLE_NAME)
+        .select()
+        .where({cpf})
+
+        return result
     }
     public async create(item:any):Promise<void>{
         await super.create(item)
     }
-    public async deleteById(id:string):Promise<void>{
-        await super.deleteById(id)
+    public async deleteByCpf(cpf:string):Promise<void>{
+        await BaseDatabase.connection(this.TABLE_NAME)
+        .delete()
+        .where({cpf})
     }
-    public async update(id:string,newValues:any):Promise<void>{
-        await super.update(id,newValues)
+    public async update(cpf:string,newValues:any):Promise<void>{
+        await BaseDatabase.connection(this.TABLE_NAME)
+        .update({newValues})
+        .where({cpf})
     }
 }

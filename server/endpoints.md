@@ -13,3 +13,4 @@ ok
 ok
 > PUT client
 > PUT address
+> verificação de duplicidade de cadastro
