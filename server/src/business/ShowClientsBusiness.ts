@@ -1,7 +1,7 @@
 import { ClientDTO } from "../models/ClientDTO";
 import { ClientsRepository } from "./ClientsRepository";
 
-export class GetClientsBusiness{
+export class ShowClientsBusiness{
     constructor(
         private clientsDatabase:ClientsRepository
     ){}

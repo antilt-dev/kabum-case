@@ -2,8 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { signupRouter } from './routes/SignupRouter';
-import { getAllClientsRouter } from './routes/GetClientsRouter';
 import { loginRouter } from './routes/LoginRouter';
+import { showClientsRouter } from './routes/ShowClientsRouter';
+import { showAdminsRouter } from './routes/ShowAdminsRouter';
+import { deleteClientRouter } from './routes/DeleteClientRouter';
 
 
 
@@ -17,8 +19,11 @@ app.use(cors())
 
 
 app.use('/signup',signupRouter)
-app.use('/clients',getAllClientsRouter)
 app.use('/login',loginRouter)
+app.use('/clients',showClientsRouter)
+app.use('/clients',deleteClientRouter)
+app.use('/admins',showAdminsRouter)
+
 
 
 

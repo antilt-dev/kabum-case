@@ -1,3 +1,4 @@
+import { generateId } from "../services/generateId";
 import { HashManager } from "../services/HashManager";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -43,6 +44,8 @@ class Migrations extends BaseDatabase {
 
     insertData = async ()=>{0
         const hashManager = new HashManager()
+        const hashPassword = await hashManager.hash('Kabum2023@')
+        const id = generateId()
         
         await BaseDatabase.connection.raw(`
             INSERT INTO clients (cpf,rg,name,birthdate,phone) VALUES ("22510171194","385139664","Débora Mariah Lopes","1993-02-11","+5511985694911");
@@ -51,6 +54,7 @@ class Migrations extends BaseDatabase {
             INSERT INTO clients_address (id, client_cpf,country,state,city,zipcode,street,address_number) VALUES ("0973d628-ab21-11ed-afa1-0242ac120002", "22510171194","brazil","SP","São Paulo","08235770","Avenida Coronel Alves e Rocha Filho",704);
             INSERT INTO clients_address (id, client_cpf,country,state,city,zipcode,street,address_number, address_line_2) VALUES ("762db28e-ab21-11ed-afa1-0242ac120002", "25537887037","brazil","AC","Rio Branco","69901172","Travessa Dourado",415, "casa 102");
             INSERT INTO clients_address (id, client_cpf,country,state,city,zipcode,street,address_number) VALUES ("cd24283e-ab21-11ed-afa1-0242ac120002", "23552202200","brazil","CE","Fortaleza","60863180","Rua N",917); 
+            INSERT INTO admins (id, name, email, password) VALUES("${id}",'Gabriel Antunes','admin@kabum.com.br',"${hashPassword}");
         `)
         .then(() => { console.log("successfully migrated tables") })
         .catch(this.printError)  

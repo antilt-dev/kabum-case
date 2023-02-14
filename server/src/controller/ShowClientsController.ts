@@ -1,13 +1,13 @@
 import { Request,Response } from "express";
-import { GetAdminsBusiness } from "../business/GetAdminsBusiness";
+import { ShowClientsBusiness } from "../business/ShowClientsBusiness";
 
-export class GetClientsController{
+export class ShowClientsController{
      constructor(
-        private getAdminsBusiness:GetAdminsBusiness
+        private showClients:ShowClientsBusiness
     ){}
     public getAllClients = async (req:Request,res:Response) =>{
         try {
-            const clients = await this.getAdminsBusiness.getAllAdmins()
+            const clients = await this.showClients.getAllClients()
             res.status(200).send(clients)
         } catch (error:any) {
             return res.status(400).send({

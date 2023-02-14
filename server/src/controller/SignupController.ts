@@ -8,14 +8,17 @@ export class SignupController{
     ){}
     public signup = async (req:Request,res:Response) =>{
         try {
+            const creatorToken:string = req.headers.auth as string
+
             const {name,email,password}:CreateAdminDTO = req.body
+
             const input = {
                 name,
                 email,
                 password
             }
-            const token = await this.signupBusiness.signup(input)
-            res.status(201).send(token);
+            const token = await this.signupBusiness.signup(creatorToken,input)
+            res.status(201).send(`Access Token: ${token}`);
           
         } catch (error:any) {
             return res.status(400).send({
