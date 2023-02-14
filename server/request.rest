@@ -17,3 +17,7 @@ Content-Type: application/json
     "email":"admin@kabum.com.br",
     "password":"Kabum2023@"
 }
+
+###
+GET http://localhost:3003/admins/getAll
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjM5NTE3NiwiZXhwIjoxNjc2Mzk4Nzc2fQ.O7oLFvAgBTuQ44RQ2_lO1RHfp1f_nPX8Eer9CrNofhU

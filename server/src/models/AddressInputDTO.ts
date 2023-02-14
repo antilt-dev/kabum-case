@@ -1,6 +1,5 @@
-export interface ClientAddressDTO{
-    id: string,
-    client_cpf:string,
+export interface AddressInputDTO{
+    cpf:string,
     country:string,
     state:string,
     city:string,
