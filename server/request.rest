@@ -15,5 +15,5 @@ Content-Type: application/json
 
 {
     "email":"admin@kabum.com.br",
-    "password":"abc123@@@"
+    "password":"Kabum2023@"
 }
