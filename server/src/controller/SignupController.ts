@@ -4,9 +4,9 @@ import { CreateAdminDTO } from '../models/CreateAdminDTO'
 
 export class SignupController{
     constructor(
-        private SignupBusiness:SignupBusiness
+        private signupBusiness:SignupBusiness
     ){}
-    public Signup = async (req:Request,res:Response) =>{
+    public signup = async (req:Request,res:Response) =>{
         try {
             const {name,email,password}:CreateAdminDTO = req.body
             const input = {
@@ -14,7 +14,7 @@ export class SignupController{
                 email,
                 password
             }
-            const token = await this.SignupBusiness.signup(input)
+            const token = await this.signupBusiness.signup(input)
             res.status(201).send(token);
           
         } catch (error:any) {

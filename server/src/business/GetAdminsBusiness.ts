@@ -5,7 +5,7 @@ export class GetAdminsBusiness{
     constructor(
         private clientsDatabase:AdminsRepository
     ){}
-    public getAllClients = async ()=>{
+    public getAllAdmins = async ()=>{
         try{
             const result:AdminDTO[] = await this.clientsDatabase.getAll()
             return result

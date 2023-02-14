@@ -1,0 +1,19 @@
+POST http://localhost:3003/signup/
+Content-Type: application/json
+
+{
+    "name":"Admin",
+    "email":"newdev@kabum.com.br",
+    "password":"123Kabum@"
+}
+###
+GET http://localhost:3003/clients/getAll
+
+###
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email":"admin@kabum.com.br",
+    "password":"abc123@@@"
+}

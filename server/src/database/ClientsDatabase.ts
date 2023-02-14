@@ -4,8 +4,8 @@ import { ClientDTO } from "../models/ClientDTO";
 export class ClientsDatabase extends BaseDatabase{
     TABLE_NAME = "clients"
 
-    public async getAll(query?:string,sort?:string,order?:string):Promise<ClientDTO[]>{
-        return super.getAll(query,sort,order)
+    public async getAll():Promise<ClientDTO[]>{
+        return super.getAll()
     }
     public async getById(id:string):Promise<ClientDTO>{
         return super.getById(id)
