@@ -19,7 +19,7 @@ export class AddressDatabase extends BaseDatabase{
     public async getByCpf(cpf:string):Promise<AddressDTO[]>{
         const result = await BaseDatabase.connection(this.TABLE_NAME)
         .select()
-        .where({cpf})
+        .where({client_cpf:cpf})
 
         return result
     }
