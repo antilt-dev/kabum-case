@@ -39,9 +39,7 @@ export class CreateAddressBusiness{
                 state : newAddress.state,
                 city : newAddress.city,
                 zipcode : newAddress.zipcode,
-                street : newAddress.street,
-                address_number : newAddress.address_number,
-                address_line_2 : newAddress.address_line_2
+                full_address : newAddress.full_address
             }
 
             await this.addressDatabase.create(address)
