@@ -8,6 +8,7 @@ import { deleteClientRouter } from './routes/DeleteClientRouter';
 import { createAddressRouter } from './routes/CreateAddressRouter';
 import { clientDetailRouter } from './routes/ClientDetailRouter';
 import { deleteAddressRouter } from './routes/DeleteAddressRouter';
+import { updateClientRouter } from './routes/UpdateClientRouter';
 
 
 
@@ -24,6 +25,7 @@ app.use('/login',loginRouter)
 app.use('/clients',showClientsRouter)
 app.use('/clients',deleteClientRouter)
 app.use('/clients',clientDetailRouter)
+app.use('/clients',updateClientRouter)
 app.use('/clients/address',createAddressRouter)
 app.use('/clients/address',deleteAddressRouter)
 

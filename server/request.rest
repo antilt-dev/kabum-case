@@ -22,7 +22,7 @@ auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNm
 ###
 POST http://localhost:3003/clients/address/create
 Content-Type: application/json
-auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0N2Y4YjU4LTk0ZDItNGQ5My1hNmMxLWU3ZTFkYTRhNTZhYyIsImlhdCI6MTY3NjQxODc2OCwiZXhwIjoxNjc2NDIyMzY4fQ.OG_WyWjhahhjOSWBpfwLl5_w3V1x8OUpfRB4NKe-M3A
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjQ3MDc0MSwiZXhwIjoxNjc2NDc0MzQxfQ.T566EMXF4IkTxRQ8fkoi3-F9jlLq5LYrDEqfS843AeQ
 
 {
     "cpf":"22510171194",
@@ -30,9 +30,8 @@ auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0N2Y4YjU4LTk0ZDItNGQ5My1hNm
     "state":"Rio Grande do Sul",
     "city":"Porto Alegre",
     "zipcode":"94850410",
-    "street":"Rua edu chaves",
-    "address_number":195,
-    "address_line_2":"Casa 201"
+    "full_address":"Rua edu chaves, 179 - casa 201"
+
 }
 
 ###
@@ -47,3 +46,5 @@ auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0N2Y4YjU4LTk0ZDItNGQ5My1hN
 ###
 DELETE http://localhost:3003/clients/address/88f79c15-0df9-428a-9620-c5d51beb15a3
 auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0N2Y4YjU4LTk0ZDItNGQ5My1hNmMxLWU3ZTFkYTRhNTZhYyIsImlhdCI6MTY3NjQyNDE4NSwiZXhwIjoxNjc2NDI3Nzg1fQ.1J9iwK4SDRWjuk5JNX3ePYQuVw3UC4oCSgJPVxCb38Y
+
+###
