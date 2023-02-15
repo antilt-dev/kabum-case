@@ -12,8 +12,7 @@ export class DeleteClientBusiness{
     public deleteClient = async (cpf:string,token:string)=>{
         let statusCode = 500
         try{
-            const authenticator = new Authenticator() 
-
+            
             if(!token){
                 statusCode = 412
                 throw new CustomError(statusCode,'É necessário informar o token de acesso!')
@@ -22,11 +21,13 @@ export class DeleteClientBusiness{
                 statusCode = 412
                 throw new CustomError(statusCode,'É necessário informar o CPF do cliente que será excluido!')
             }
+
+            const authenticator = new Authenticator() 
             const verifyToken = authenticator.verifyToken(token)
 
             if(!verifyToken){
                 statusCode = 401
-                throw new CustomError(statusCode,"Você não tem permissão para acessar estes dados!")
+                throw new CustomError(statusCode,"O token informado é inválido.")
             }
 
             const client = await this.clientsDatabase.getByCpf(cpf)
@@ -36,11 +37,12 @@ export class DeleteClientBusiness{
                 throw new CustomError(statusCode,"Não foi encontrado nenhum cliente com este CPF.")
             }
 
-            await this.addressDatabase.deleteBtCpf(cpf)
+            await this.addressDatabase.deleteByCpf(cpf)
             
             await this.clientsDatabase.deleteByCpf(cpf)
+
         }catch(error:any){
-            throw new Error(error.message || error.sqlMessage)
+            throw new CustomError(error.statusCode || 400,error.message || error.sqlMessage)
         }
     }
 }

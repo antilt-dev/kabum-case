@@ -12,6 +12,8 @@ export class DeleteClienteController{
             const token = req.headers.auth as string
             
             await this.deleteClientBusiness.deleteClient(cpf,token)
+
+            res.status(200).send("Cliente excluido com sucesso!")
           
         } catch (error:any) {
             return res.status(400).send({

@@ -6,5 +6,5 @@ export interface AddressRepository{
     deleteById(id:string):Promise<void>
     update(id:string,newValues:any):Promise<void>
     getByCpf(cpf:string):Promise<AddressDTO[]>
-    deleteBtCpf(cpf:string):Promise<void>
+    deleteByCpf(cpf:string):Promise<void>
 }

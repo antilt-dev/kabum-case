@@ -1,13 +1,4 @@
-POST http://localhost:3003/signup/
-Content-Type: application/json
-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjQwMDAzOSwiZXhwIjoxNjc2NDAzNjM5fQ.iSuRPotjVpqvzE7NLt550kKlFJ2vmy_IOu538jyOXF0
 
-{
-    "name":"Admin",
-    "email":"onemore@kabum.com.br",
-    "password":"123Kabum@"
-}
-###
 GET http://localhost:3003/clients/getAll
 
 ###
@@ -20,14 +11,39 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3003/admins/getAll
-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjQwMDAzOSwiZXhwIjoxNjc2NDAzNjM5fQ.iSuRPotjVpqvzE7NLt550kKlFJ2vmy_IOu538jyOXF0
-
-###
 DELETE http://localhost:3003/clients/delete
 Content-Type: application/json
-auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjQwMjIzMCwiZXhwIjoxNjc2NDA1ODMwfQ.HYyom1ZoEyX-uQOXIqYYfBiBLnloKwGWeUyOkAW-PhY
+auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjQxNTAyNCwiZXhwIjoxNjc2NDE4NjI0fQ.5Ok6qe6xh1T5e0C9TdZ3F6XCnMF9nvsEbtXd5ZXWDkk
 
 {
-    "cpf":"2355202200"
+    "cpf":"22510171f194"
 }
+
+###
+POST http://localhost:3003/clients/address/create
+Content-Type: application/json
+auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0N2Y4YjU4LTk0ZDItNGQ5My1hNmMxLWU3ZTFkYTRhNTZhYyIsImlhdCI6MTY3NjQxODc2OCwiZXhwIjoxNjc2NDIyMzY4fQ.OG_WyWjhahhjOSWBpfwLl5_w3V1x8OUpfRB4NKe-M3A
+
+{
+    "cpf":"22510171194",
+    "country":"Brazil",
+    "state":"Rio Grande do Sul",
+    "city":"Porto Alegre",
+    "zipcode":"94850410",
+    "street":"Rua edu chaves",
+    "address_number":195,
+    "address_line_2":"Casa 201"
+}
+
+###
+GET http://localhost:3003/clients/detail
+Content-Type: application/json
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0N2Y4YjU4LTk0ZDItNGQ5My1hNmMxLWU3ZTFkYTRhNTZhYyIsImlhdCI6MTY3NjQyNDE4NSwiZXhwIjoxNjc2NDI3Nzg1fQ.1J9iwK4SDRWjuk5JNX3ePYQuVw3UC4oCSgJPVxCb38Y
+
+{
+    "cpf":"22510171194"
+}
+
+###
+DELETE http://localhost:3003/clients/address/88f79c15-0df9-428a-9620-c5d51beb15a3
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0N2Y4YjU4LTk0ZDItNGQ5My1hNmMxLWU3ZTFkYTRhNTZhYyIsImlhdCI6MTY3NjQyNDE4NSwiZXhwIjoxNjc2NDI3Nzg1fQ.1J9iwK4SDRWjuk5JNX3ePYQuVw3UC4oCSgJPVxCb38Y

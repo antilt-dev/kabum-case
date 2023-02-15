@@ -1,8 +1,9 @@
 import express from 'express'
 import { ClientsDatabase } from '../database/ClientsDatabase'
+import { AddressDatabase } from '../database/AddressDatabase'
 import { DeleteClientBusiness } from '../business/DeleteClientBusiness'
 import { DeleteClienteController } from '../controller/DeleteClientController'
-import { AddressDatabase } from '../database/AddressDatabase'
+
 
 export const deleteClientRouter = express.Router()
 
