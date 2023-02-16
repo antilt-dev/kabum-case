@@ -12,4 +12,4 @@ const addressDatabase = new AddressDatabase()
 const clientDetailBusiness = new ClientDetailBusiness(clientsDatabase,addressDatabase)
 const clientDetailController = new ClientDetailController(clientDetailBusiness)
 
-clientDetailRouter.get('/detail',clientDetailController.getClient)
+clientDetailRouter.get('/detail/:cpf',clientDetailController.getClient)

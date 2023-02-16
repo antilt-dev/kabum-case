@@ -11,6 +11,11 @@ import { goHome } from "../../Routes/Coordinator";
 import useForm from "../../Hooks/useForm";
 import ButtonPrimary from "../../Components/ButtonPrimary";
 import { Container, LoginForm } from './styles';
+import {
+  
+
+
+      } from '../../Constants/apiEndpointsURL'
 
 
 const Login=()=>{
@@ -24,7 +29,7 @@ const Login=()=>{
 
    const checkToken = async()=>{
     const token = localStorage.getItem('token')
-    const isValid = await axios.get(`http://localhost:3003/token-validation/${token}`)
+    const isValid = await axios.get(tokenValidationURL(token))
     if(isValid){
       goHome(navigate)
     }

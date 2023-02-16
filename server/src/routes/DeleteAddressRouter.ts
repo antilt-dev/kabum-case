@@ -9,4 +9,4 @@ const addressDatabase = new AddressDatabase();
 const deleteAddressBusiness = new DeleteAddressBusiness(addressDatabase);
 const deleteAddressController = new DeleteAddressController(deleteAddressBusiness);
 
-deleteAddressRouter.delete('/:id', deleteAddressController.deleteAddress);
+deleteAddressRouter.delete('/delete/:id', deleteAddressController.deleteAddress);
