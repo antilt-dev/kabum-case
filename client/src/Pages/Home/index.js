@@ -75,11 +75,6 @@ const Home=()=>{
                 }
             }
             await axios.post(createClientURL,form,headers)
-            alert("Cliente cadastrado com sucesso!")
-            cleanInputs()
-            setModalOpen(!modalOpen)
-            setChageData(!changeData) 
-            alert("Cliente cadastrado com sucesso!")
         } catch (error) {
             alert("Erro ao cadastrar Cliente!")
             console.log(error)
