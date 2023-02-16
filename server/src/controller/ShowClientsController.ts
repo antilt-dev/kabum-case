@@ -7,7 +7,8 @@ export class ShowClientsController{
     ){}
     public getAllClients = async (req:Request,res:Response) =>{
         try {
-            const clients = await this.showClients.getAllClients()
+            const token = req.headers.auth as string
+            const clients = await this.showClients.getAllClients(token)
             res.status(200).send(clients)
         } catch (error:any) {
             return res.status(400).send({

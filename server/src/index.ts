@@ -12,6 +12,7 @@ import { updateClientRouter } from './routes/UpdateClientRouter';
 import { tokenValidationRouter } from './routes/TokenValidationRouter';
 import { updateAddressRouter } from './routes/UpdateAddressRouter';
 import { getAddressesRouter } from './routes/GetAddressesRouter';
+import { createClientRouter } from './routes/CreateClientRouter';
 
 
 dotenv.config()
@@ -28,6 +29,7 @@ app.use('/clients',showClientsRouter)
 app.use('/clients',deleteClientRouter)
 app.use('/clients',clientDetailRouter)
 app.use('/clients',updateClientRouter)
+app.use('/clients',createClientRouter)
 app.use('/clients/address',createAddressRouter)
 app.use('/clients/address',deleteAddressRouter)
 app.use('/clients/address',updateAddressRouter)
