@@ -1,13 +1,15 @@
 import { TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import useForm from "../../Hooks/useForm";
+import useRequestData from "../../Hooks/useRequestData";
 import {Addresses, Container, PersonalData} from './styles'
 
-const Client=()=>{
-    const [data,isLoading] = useRequestData(urlGetTravels);
+const ClientDetails=()=>{
+    const [data,isLoading] = useRequestData("urlGetTravels","token");
+    const {editor,setEditor} = useState(false)
 
     const {form,onChange,cleanInputs} = useForm(data)
-    
+
   return (
    <Container>
         <PersonalData>
@@ -19,6 +21,7 @@ const Client=()=>{
                 required
                 fullWidth
                 type="text"
+                disabled={editor}
             />
             <TextField 
                 name="cpf"
@@ -28,6 +31,7 @@ const Client=()=>{
                 required
                 fullWidth
                 type="text"
+                disabled={editor}
             />
             <TextField 
                 name="rg"
@@ -37,6 +41,7 @@ const Client=()=>{
                 required
                 fullWidth
                 type="text"
+                disabled={editor}
             />
             <TextField 
                 name="birthdate"
@@ -46,6 +51,7 @@ const Client=()=>{
                 required
                 fullWidth
                 type="text"
+                disabled={editor}
             />
             <TextField 
                 name="phone"
@@ -55,10 +61,11 @@ const Client=()=>{
                 required
                 fullWidth
                 type="text"
+                disabled={editor}
             />
         </PersonalData>
         <Addresses>
-
+            {/* {renderAddress} */}
         </Addresses>
    </Container>
   );
