@@ -6,6 +6,7 @@ import {Container, Header,Footer,ClientsList, Logout, Title} from './styles';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { goLogin } from "../../Routes/Coordinator";
 import logo from "../../assets/kabum-icon.png"
+import AddressCard from  "../../Components/AddressCard"
 
 const Home=()=>{
     const navigate = useNavigate()
@@ -50,6 +51,7 @@ const Home=()=>{
         </Header>
         <ClientsList>
             {renderClients}
+            <AddressCard onChange="onChange" form="form" editor="edtor"/>
         </ClientsList>
         <Footer>
             <h4>Desenvolvido por: Gabriel Antunes</h4>
