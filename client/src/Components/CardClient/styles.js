@@ -68,7 +68,6 @@ export const Buttons = styled.div`
     button{
         border:none;
         font-size:18px;
-        color:none;
         cursor: pointer;
         background-color:transparent;
         color:rgba(0,0,0,.8);
@@ -90,11 +89,41 @@ export const Address = styled.div`
     flex-direction:column;
     justify-content:space-between;
     border-right: 3px solid rgba(0,0,0,.4);
-    background-color:blue;
-    h3{
-        background-color:red;
-    }
+    
     h3{
         color: rgba(0,0,0,.7)
     }
+    div:nth-child(1){
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding: 0 5%;
+
+        button{
+        border:none;
+        font-size:18px;
+        cursor: pointer;
+        background-color:transparent;
+        color:rgba(0,0,0,.8);
+
+        &:hover{
+            text-decoration:underline;
+            transform:scale(1.05)
+        }
+    }
+
+    }
+`;
+
+export const Form = styled.form`
+        max-width:500px;
+        max-height:80%;
+        border:1px solid #2196f3;
+        border-radius:20px;
+        padding:30px;
+        background-color:white;
+        div{
+            margin-top:10px;
+        }
 `;

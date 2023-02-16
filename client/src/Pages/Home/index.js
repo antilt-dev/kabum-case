@@ -2,25 +2,24 @@ import React,{useEffect, useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../Components/ButtonPrimary";
-import {Container, Header,Footer,ClientsList, Logout, Title, Form, Buttons} from './styles';
+import {Container, Header,Footer,ClientsList, HeaderButton, Title, Form, Buttons} from './styles';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { goLogin } from "../../Routes/Coordinator";
-import logo from "../../assets/kabum-icon.png"
-import AddressCard from  "../../Components/AddressCard"
-import {tokenValidationURL, getClientsURL,createClientURL,deleteClientURL, clientUpdateURL, getAddressURL} from "../../Constants/apiEndpointsURL"
+import {tokenValidationURL, getClientsURL,createClientURL,deleteClientURL, clientUpdateURL} from "../../Constants/apiEndpointsURL"
 import useRequestData from "../../Hooks/useRequestData";
 import useForm from "../../Hooks/useForm"
 import { FilledInput, FormControl, InputLabel, Modal} from "@mui/material";
 import { Box } from "@mui/system";
 import CardClient from '../../Components/CardClient'
 import moment from 'moment';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 
 const Home=()=>{
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
     const [changeData,setChageData] = useState('true')
-    const [modalOpen,setModalOpen] = useState(true)
+    const [modalOpen,setModalOpen] = useState(false)
     const {form,onChange,cleanInputs} = useForm({
         name:"",
         cpf:"",
@@ -49,6 +48,7 @@ const Home=()=>{
    } 
 
     const handleLogout = () =>{
+        console.log('oi')
         localStorage.removeItem('token')
         goLogin(navigate)
     }
@@ -73,6 +73,10 @@ const Home=()=>{
         setChageData(!changeData)
     }
 
+    const handleAddClient = ()=>{
+        setModalOpen(!modalOpen)
+    }
+
     const handleCreateClient =async (e)=>{
         e.preventDefault()
         const headers = {
@@ -87,10 +91,11 @@ const Home=()=>{
             alert("Cliente cadastrado com sucesso!")
         } catch (error) {
             alert("Erro ao cadastrar Cliente!")
+            console.log(error.message)
         }
     } 
 
-    const [data,isLoading,error] = useRequestData(getClientsURL,changeData,token)
+    const [data] = useRequestData(getClientsURL,changeData,token)
 
     const renderClients = data && data.map((client)=>{
         const date = moment(client.birthdate).format('DD/MM/YYYY')
@@ -101,7 +106,6 @@ const Home=()=>{
                 rg={client.rg}
                 birthdate={date}
                 phone={client.phone}
-                editClient={()=>handleEditClient(client.cpf)}
                 deleteClient={()=>{handleDeleteClient(client.cpf)}}
                 token={token}
                 />
@@ -111,18 +115,26 @@ const Home=()=>{
   return (
    <Container>
         <Header>
-            <img src={logo} alt="Logo"/>
+            <HeaderButton>
+                <ButtonPrimary 
+                    children="Cadastrar"
+                    onClick={handleAddClient}
+                    endIcon={<PersonAddIcon/>}
+                />
+            </HeaderButton>
             <Title>
                 <h1>Controle de Clientes</h1>
             </Title>
-            <Logout>
+            <HeaderButton>
                 <ButtonPrimary 
                     children="Logout"
-                    type="submit"
-                    handleCLick={handleLogout}
+                    onClick={handleLogout}
                     endIcon={<LogoutIcon/>}
                 />
-            </Logout>
+            </HeaderButton> 
+           
+          
+           
         </Header>
 
         <ClientsList>
