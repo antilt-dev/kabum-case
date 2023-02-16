@@ -236,3 +236,4 @@ const modalStyle = {
     justifyContent:"center",
     borderRadius:"20px"
   };
+  
