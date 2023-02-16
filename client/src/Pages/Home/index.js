@@ -5,7 +5,7 @@ import ButtonPrimary from "../../Components/ButtonPrimary";
 import {Container, Header,Footer,ClientsList, HeaderButton, Title, Form, Buttons} from './styles';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { goLogin } from "../../Routes/Coordinator";
-import {tokenValidationURL, getClientsURL,createClientURL,deleteClientURL, clientUpdateURL} from "../../Constants/apiEndpointsURL"
+import {tokenValidationURL, getClientsURL,createClientURL,deleteClientURL} from "../../Constants/apiEndpointsURL"
 import useRequestData from "../../Hooks/useRequestData";
 import useForm from "../../Hooks/useForm"
 import { FilledInput, FormControl, InputLabel, Modal} from "@mui/material";
@@ -48,7 +48,6 @@ const Home=()=>{
    } 
 
     const handleLogout = () =>{
-        console.log('oi')
         localStorage.removeItem('token')
         goLogin(navigate)
     }
@@ -63,35 +62,27 @@ const Home=()=>{
         setChageData(!changeData)
     }
 
-    const handleEditClient = async(cpf)=>{
-        const headers = {
-            headers:{
-                auth:token
-            }
-        }
-        await axios.put(clientUpdateURL(cpf),headers)
-        setChageData(!changeData)
-    }
-
     const handleAddClient = ()=>{
         setModalOpen(!modalOpen)
     }
 
     const handleCreateClient =async (e)=>{
         e.preventDefault()
-        const headers = {
-            headers:{
-                auth:token
-            }
-        }
         try {
+            const headers = {
+                headers:{
+                    auth:token
+                }
+            }
             await axios.post(createClientURL,form,headers)
+            alert("Cliente cadastrado com sucesso!")
             cleanInputs()
-            setModalOpen(false) 
+            setModalOpen(!modalOpen)
+            setChageData(!changeData) 
             alert("Cliente cadastrado com sucesso!")
         } catch (error) {
             alert("Erro ao cadastrar Cliente!")
-            console.log(error.message)
+            console.log(error)
         }
     } 
 
@@ -108,6 +99,8 @@ const Home=()=>{
                 phone={client.phone}
                 deleteClient={()=>{handleDeleteClient(client.cpf)}}
                 token={token}
+                setChangeData={setChageData}
+                changeData={changeData}
                 />
 
     })
@@ -139,7 +132,6 @@ const Home=()=>{
 
         <ClientsList>
             {renderClients && renderClients}
-            {/* <AddressCard onChange=" form="form" editor="edtor"/> */}
         </ClientsList>
 
         <Modal  

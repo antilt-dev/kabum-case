@@ -3,7 +3,7 @@ import axios from "axios";
 import {Container, Personal, Addresses, Buttons, Address, Form} from './styles';
 import RowTable from '../Rowtable'
 import useRequestData from "../../Hooks/useRequestData";
-import { clientDetailURL, clientUpdateURL, deleteAddressURL, getAddressURL, getClientsURL } from "../../Constants/apiEndpointsURL";
+import { clientUpdateURL, createAddressURL, deleteAddressURL, getAddressURL, updateAddressURL } from "../../Constants/apiEndpointsURL";
 import { Box, FilledInput, FormControl, InputLabel, Modal } from "@mui/material";
 import ButtonPrimary from "../ButtonPrimary";
 import useForm from "../../Hooks/useForm";
@@ -12,6 +12,8 @@ const CardClient=(props)=>{
     const [changeData, setChangeData] = useState(false)
     const [data] = useRequestData(getAddressURL(props.cpf),changeData,props.token)
     const [modalOpenClient,setModalOpenClient] = useState(false)
+    const [modalOpenAddress,setModalOpenAddress] = useState(false)
+    const [modalNewAddress,setModalnewAddress] = useState(false)
     const {form,onChange,cleanInputs} = useForm({})
     const [identifier,setIdentifier] = useState("")
     
@@ -32,12 +34,41 @@ const CardClient=(props)=>{
         }
     }
 
+    const handleCreateAddress = async (e) =>{
+        e.preventDefault()
+        try {
+            const newAddress = {
+                ...form,"cpf":identifier
+            }
+            await axios.post(createAddressURL,newAddress,headers)
+            setModalnewAddress(false)
+        } catch (error) {
+            alert('Não foi possível criar este endereço.')
+            console.log(error)
+        }
+    }
+
+    const handleUpdateAddress = async (e)=>{
+        e.preventDefault()
+        try {
+            await axios.put(updateAddressURL(identifier),form,headers)
+            cleanInputs()
+            setModalOpenAddress(false)
+            setChangeData(!changeData)
+            props.setChangeData(!props.changeData)
+        } catch (error) {
+            alert('Não foi possível atualizar o endereço!')
+            console.log(error.message)
+        }
+    }
     const handleUpdateClient = async (e)=>{
         e.preventDefault()
 
         try {
-            console.log(identifier,form)
             await axios.put(clientUpdateURL(identifier),form,headers)
+            cleanInputs()
+            setModalOpenClient(false)
+            props.setChangeData(!props.changeData)
         } catch (error) {
             alert('Não foi possível atualizar o cliente!')
             console.log(error.message)
@@ -49,11 +80,22 @@ const CardClient=(props)=>{
         setModalOpenClient(true)
     }
 
+    const editAddress = (id)=>{
+        setIdentifier(id)
+        setModalOpenAddress(true)
+    }
+
+    const createAddress = (cpf)=>{
+        setIdentifier(cpf)
+        setModalnewAddress(true)
+    }
+
     const renderAddress = data && data.map((item,index)=>{
         return <Address key={item.id}> 
                     <div>
                         <h3>Endereço {index+1}</h3>
                         <button onClick={()=>handleDeleteAddress(item.id)}>excluir</button>
+                        <button onClick={()=>editAddress(item.id)}>alterar</button>
                     </div>
                     <RowTable title="País:" text={item.country}/>
                     <RowTable title="Estado:" text={item.state}/>
@@ -72,7 +114,7 @@ const CardClient=(props)=>{
             <RowTable title="Data de nascimento:" text={props.birthdate}/>
             <RowTable title="Telefone:" text={props.phone}/>
             <Buttons>
-                <button onClick={props.createAddress}>adicionar endereço</button>
+                <button onClick={()=>createAddress(props.cpf)}>adicionar endereço</button>
                 <button onClick={()=>editClient(props.cpf)}>editar</button>
                 <button onClick={props.deleteClient}>excluir</button>
             </Buttons>
@@ -80,7 +122,7 @@ const CardClient=(props)=>{
         <Addresses>
             {renderAddress && renderAddress}
         </Addresses>
-
+{/* MODAL DE ATUALIZAÇÃO DAS INFORMAÇÕES DO CLIENTE  */}
         <Modal  
             open={modalOpenClient}
             onClose={()=>setModalOpenClient(false)}>
@@ -128,8 +170,131 @@ const CardClient=(props)=>{
                 </Form>
             </Box>
         </Modal>
+
+{/* MODAL DE ATUALIZAÇÃO DOS ENDEREÇOES */}
+
+        <Modal  
+            open={modalOpenAddress}
+            onClose={()=>setModalOpenAddress(false)}>
+            <Box sx={modalStyle}>
+                <Form>
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>País</InputLabel>
+                        <FilledInput
+                            name="country"
+                            value={form.country}
+                            onChange={onChange}
+                        />
+                    </FormControl>   
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>Estado</InputLabel>
+                        <FilledInput
+                            name="state"
+                            value={form.state}
+                            onChange={onChange}
+                        />
+                    </FormControl>  
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>City</InputLabel>
+                        <FilledInput
+                            name="city"
+                            value={form.city}
+                            onChange={onChange}
+                        />
+                    </FormControl>  
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>CEP</InputLabel>
+                        <FilledInput
+                            name="zipcode"
+                            value={form.zipcode}
+                            onChange={onChange}
+                    />
+                    </FormControl>
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>Endereço</InputLabel>
+                        <FilledInput
+                            name="full_address"
+                            value={form.full_address}
+                            onChange={onChange}
+                    />
+                    </FormControl>
+                    <Buttons>
+                        <ButtonPrimary
+                            children="Enviar alterações."
+                            type="submit"
+                            onClick={(event)=>handleUpdateAddress(event)}
+                        /> 
+                    </Buttons>
+                </Form>
+            </Box>
+        </Modal>
+
+{/* MODAL DE CRIAÇÃO DE UM ENDEREÇO */}
+
+        <Modal  
+            open={modalNewAddress}
+            onClose={()=>setModalnewAddress(false)}>
+            <Box sx={modalStyle}>
+                <Form>
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>País</InputLabel>
+                        <FilledInput
+                            name="country"
+                            value={form.country}
+                            onChange={onChange}
+                            required
+                        />
+                    </FormControl>   
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>Estado</InputLabel>
+                        <FilledInput
+                            name="state"
+                            value={form.state}
+                            onChange={onChange}
+                            required
+                        />
+                    </FormControl>  
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>City</InputLabel>
+                        <FilledInput
+                            name="city"
+                            value={form.city}
+                            onChange={onChange}
+                            required
+                        />
+                    </FormControl>  
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>CEP</InputLabel>
+                        <FilledInput
+                            name="zipcode"
+                            value={form.zipcode}
+                            onChange={onChange}
+                            required
+                    />
+                    </FormControl>
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>Endereço</InputLabel>
+                        <FilledInput
+                            name="full_address"
+                            value={form.full_address}
+                            onChange={onChange}
+                            required
+                    />
+                    </FormControl>
+                    <Buttons>
+                        <ButtonPrimary
+                            children="Adicionar endereço"
+                            type="submit"
+                            onClick={(event)=>handleCreateAddress(event)}
+                        /> 
+                    </Buttons>
+                </Form>
+            </Box>
+        </Modal>
    </Container>
    
+
+//    MODAL DE ATUALIZAÇÃO DOS ENDEREÇOS
    
   );
 }
@@ -144,7 +309,7 @@ const modalStyle = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 600,
-    height:600,
+    height:700,
     bgcolor:'white',
     boxShadow: 2,
     p: 2,

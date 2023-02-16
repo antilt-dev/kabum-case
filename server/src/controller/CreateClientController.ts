@@ -9,7 +9,7 @@ export class CreateClientController{
         try {
             const newClient = req.body
             const token = req.headers.auth as string
-
+            
             await this.createClientBusiness.createClient(token,newClient)
         } catch (error:any) {
             return res.status(400).send({

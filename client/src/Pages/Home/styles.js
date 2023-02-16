@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    min-width:750px;
+    min-width:700px;
     width:100vw;
     min-height:100vh;
     display:flex;
@@ -52,13 +52,22 @@ export const HeaderButton = styled.div`
 
 
 export const ClientsList = styled.div`
-    width:70vw;
+    width:100vw;
     max-width:100%;
     min-height:calc(83vh);
     display:flex;
     flex-direction:column;
     margin-top:13vh;
     gap:20px;
+    padding:0 15vh;
+
+    @media(max-width:800px){
+        padding:0 2%;
+    }
+    @media(max-width:550px){
+        padding:0 2%;
+    }
+        
 
 `;
 

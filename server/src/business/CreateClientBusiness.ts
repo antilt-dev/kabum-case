@@ -10,7 +10,6 @@ export class CreateClientBusiness{
     public createClient = async (token:string,newClient:ClientDTO)=>{
         let statusCode = 500
         try {
-
             if(!token){
                 statusCode = 412
                 throw new CustomError(statusCode,'É necessário informar o token de acesso!')

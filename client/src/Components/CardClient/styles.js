@@ -11,6 +11,13 @@ export const Container = styled.div`
     flex-direction:row;
     justify-content:flex-start;
     box-shadow: 5px 5px 15px black;
+    overflow-x:scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none; 
+        &::-webkit-scrollbar{
+            width:0;
+            height:0;
+        }
     
     &:hover{
         div button{
@@ -41,14 +48,8 @@ export const Addresses = styled.div`
     height:100%;
     padding: 0 3px;
     display:flex;
-    flex-direction:column;
-    overflow-y:scroll;
-        scrollbar-width: none;
-        -ms-overflow-style: none; 
-        &::-webkit-scrollbar{
-            width:0;
-            height:0;
-        }
+    flex-direction:row;
+    gap:5px;
 
     h2{
         color: rgba(0,0,0,.7)
@@ -121,7 +122,7 @@ export const Form = styled.form`
         max-height:80%;
         border:1px solid #2196f3;
         border-radius:20px;
-        padding:30px;
+        padding:50px 30px;
         background-color:white;
         div{
             margin-top:10px;
