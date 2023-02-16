@@ -12,4 +12,4 @@ const addressDatabase = new AddressDatabase()
 const deleteClientBusiness = new DeleteClientBusiness(clientsDatabase,addressDatabase)
 const deleteClienteController = new DeleteClienteController(deleteClientBusiness)
 
-deleteClientRouter.delete("/delete/:id",deleteClienteController.deleteClient)
+deleteClientRouter.delete("/delete/:cpf",deleteClienteController.deleteClient)

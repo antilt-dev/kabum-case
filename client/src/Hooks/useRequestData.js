@@ -1,18 +1,18 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
 
-const useRequestData = (url,token) => {
+const useRequestData = (url,changeData,token) => {
     const [data,setData] = useState(undefined);
     const [isLoading,setIsLoading] = useState(false);
     const [error,setError] = useState('');
 
     useEffect(()=>{
         setIsLoading(true)
-        const header = {
-            auth:token
+        const headers = {
+            headers:{auth:token}
         }
         axios
-        .get(url,header)
+        .get(url,headers)
         .then((res)=>{
             setIsLoading(false)
             setData(res.data)
@@ -21,7 +21,7 @@ const useRequestData = (url,token) => {
             setIsLoading(false)
             setError(err)
         })
-    },[url])
+    },[changeData])
     return [data,isLoading,error]
 }
 

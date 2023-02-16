@@ -6,16 +6,11 @@ import PasswordIcon from '@mui/icons-material/Password';
 import LoginIcon from '@mui/icons-material/Login';
 import axios from 'axios';
 
-import { loginURL } from "../../Constants/urlsAPI";
 import { goHome } from "../../Routes/Coordinator";
 import useForm from "../../Hooks/useForm";
 import ButtonPrimary from "../../Components/ButtonPrimary";
 import { Container, LoginForm } from './styles';
-import {
-  
-
-
-      } from '../../Constants/apiEndpointsURL'
+import {tokenValidationURL,loginURL} from '../../Constants/apiEndpointsURL'
 
 
 const Login=()=>{
@@ -29,6 +24,7 @@ const Login=()=>{
 
    const checkToken = async()=>{
     const token = localStorage.getItem('token')
+
     const isValid = await axios.get(tokenValidationURL(token))
     if(isValid){
       goHome(navigate)
@@ -47,7 +43,7 @@ const Login=()=>{
 
     axios.post(loginURL,body)
     .then((res)=>{
-      localStorage.setItem("token",res.data.token);
+      localStorage.setItem("token",res.data);
       cleanInputs()
       goHome(navigate)
 

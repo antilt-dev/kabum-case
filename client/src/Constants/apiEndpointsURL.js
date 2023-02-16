@@ -28,8 +28,8 @@ export const updateAddressURL = (id)=>{
     return `${url}/clients/address/update/${id}`
 }
 
-export const getAddressURL = (id)=>{
-    return `${url}/clients/address/${id}`
+export const getAddressURL = (cpf)=>{
+    return `${url}/clients/address/${cpf}`
 }
 
 export const tokenValidationURL = (token)=>{

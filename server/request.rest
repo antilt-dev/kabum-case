@@ -1,6 +1,6 @@
 
 GET http://localhost:3003/clients/getAll
-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjUyMjU2OCwiZXhwIjoxNjc2NTI2MTY4fQ.Oh3Ni0q9izriyrLx34RCm4uyFAOehw0buu8Jpc-ompw
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjU1MzgyMywiZXhwIjoxNjc2NTU3NDIzfQ.KfaUCFGgqOVgrnXMsLsnThwv6T5Nsrnl0NlCeR_CLyY
 
 ###
 POST http://localhost:3003/login
@@ -12,13 +12,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3003/clients/delete
+DELETE http://localhost:3003/clients/delete/23552202200
 Content-Type: application/json
-auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmOTZiNTVhLTQxYjMtNDljYS1hNmU1LTllODlhNDRhZjcyOSIsImlhdCI6MTY3NjQxNTAyNCwiZXhwIjoxNjc2NDE4NjI0fQ.5Ok6qe6xh1T5e0C9TdZ3F6XCnMF9nvsEbtXd5ZXWDkk
+auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjU1NjA2NSwiZXhwIjoxNjc2NTU5NjY1fQ.AzHbv9vM7CNe1kdaOZaqflkN_IAhCY1LZpFCzLoxo_o
 
-{
-    "cpf":"22510171f194"
-}
 
 ###
 POST http://localhost:3003/clients/address/create
