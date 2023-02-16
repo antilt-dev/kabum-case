@@ -121,7 +121,7 @@ export const Form = styled.form`
         max-height:80%;
         border:1px solid #2196f3;
         border-radius:20px;
-        padding:30px;
+        padding:50px 30px;
         background-color:white;
         div{
             margin-top:10px;

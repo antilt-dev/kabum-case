@@ -10,6 +10,8 @@ export class UpdateAddressController{
            const newValues = req.body;
            const token = req.headers.auth as string
 
+           console.log(id, token, newValues)
+
            await this.updateAddressBusiness.update(token,id,newValues)
            res.status(200).send('Endereço atualizado com sucesso!');
         } catch (err: any) {

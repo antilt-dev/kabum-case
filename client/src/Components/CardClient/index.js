@@ -3,7 +3,7 @@ import axios from "axios";
 import {Container, Personal, Addresses, Buttons, Address, Form} from './styles';
 import RowTable from '../Rowtable'
 import useRequestData from "../../Hooks/useRequestData";
-import { clientDetailURL, clientUpdateURL, deleteAddressURL, getAddressURL, getClientsURL } from "../../Constants/apiEndpointsURL";
+import { clientDetailURL, clientUpdateURL, deleteAddressURL, getAddressURL, getClientsURL, updateAddressURL } from "../../Constants/apiEndpointsURL";
 import { Box, FilledInput, FormControl, InputLabel, Modal } from "@mui/material";
 import ButtonPrimary from "../ButtonPrimary";
 import useForm from "../../Hooks/useForm";
@@ -33,6 +33,20 @@ const CardClient=(props)=>{
         }
     }
 
+    const handleUpdateAddress = async (e)=>{
+        e.preventDefault()
+
+        try {
+            await axios.put(updateAddressURL(identifier),form,headers)
+            cleanInputs()
+            setModalOpenAddress(false)
+            setChangeData(!changeData)
+            props.setChangeData(!props.changeData)
+        } catch (error) {
+            alert('Não foi possível atualizar o endereço!')
+            console.log(error.message)
+        }
+    }
     const handleUpdateClient = async (e)=>{
         e.preventDefault()
 
@@ -52,11 +66,17 @@ const CardClient=(props)=>{
         setModalOpenClient(true)
     }
 
+    const editAddress = (id)=>{
+        setIdentifier(id)
+        setModalOpenAddress(true)
+    }
+
     const renderAddress = data && data.map((item,index)=>{
         return <Address key={item.id}> 
                     <div>
                         <h3>Endereço {index+1}</h3>
                         <button onClick={()=>handleDeleteAddress(item.id)}>excluir</button>
+                        <button onClick={()=>editAddress(item.id)}>alterar</button>
                     </div>
                     <RowTable title="País:" text={item.country}/>
                     <RowTable title="Estado:" text={item.state}/>
@@ -140,34 +160,42 @@ const CardClient=(props)=>{
             <Box sx={modalStyle}>
                 <Form>
                     <FormControl fullWidth  variant="filled">
-                        <InputLabel>Nome Completo</InputLabel>
+                        <InputLabel>País</InputLabel>
                         <FilledInput
-                            name="name"
-                            value={form.name}
+                            name="country"
+                            value={form.country}
                             onChange={onChange}
                         />
                     </FormControl>   
                     <FormControl fullWidth  variant="filled">
-                        <InputLabel>RG (apenas números)</InputLabel>
+                        <InputLabel>Estado</InputLabel>
                         <FilledInput
-                            name="rg"
-                            value={form.rg}
+                            name="state"
+                            value={form.state}
                             onChange={onChange}
                         />
                     </FormControl>  
                     <FormControl fullWidth  variant="filled">
-                        <InputLabel>Data de nascimento (yyyy-mm-dd)</InputLabel>
+                        <InputLabel>City(yyyy-mm-dd)</InputLabel>
                         <FilledInput
-                            name="birthdate"
-                            value={form.birthdate}
+                            name="city"
+                            value={form.city}
                             onChange={onChange}
                         />
                     </FormControl>  
                     <FormControl fullWidth  variant="filled">
-                        <InputLabel>Telefone (ex.: +5511989898989)</InputLabel>
+                        <InputLabel>CEP</InputLabel>
                         <FilledInput
-                            name="phone"
-                            value={form.phone}
+                            name="zipcode"
+                            value={form.zipcode}
+                            onChange={onChange}
+                    />
+                    </FormControl>
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>Endereço</InputLabel>
+                        <FilledInput
+                            name="full_address"
+                            value={form.full_address}
                             onChange={onChange}
                     />
                     </FormControl>
@@ -175,7 +203,7 @@ const CardClient=(props)=>{
                         <ButtonPrimary
                             children="Enviar Alterações"
                             type="submit"
-                            onClick={(event)=>handleUpdateClient(event)}
+                            onClick={(event)=>handleUpdateAddress(event)}
                         /> 
                     </Buttons>
                 </Form>
@@ -199,7 +227,7 @@ const modalStyle = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 600,
-    height:600,
+    height:700,
     bgcolor:'white',
     boxShadow: 2,
     p: 2,
