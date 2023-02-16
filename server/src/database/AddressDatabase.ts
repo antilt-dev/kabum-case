@@ -4,7 +4,7 @@ import { BaseDatabase } from "./BaseDatabase";
 export class AddressDatabase extends BaseDatabase{
     TABLE_NAME = "clients_address"
 
-    public async getById(id:string):Promise<AddressDTO>{
+    public async getById(id:string):Promise<AddressDTO[]>{
         return super.getById(id)
     }
     public async create(item:AddressDTO):Promise<void>{

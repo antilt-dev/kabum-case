@@ -15,4 +15,15 @@ export const Container = styled.div`
     h1{
         color:#1976d2 ;
     }
-`;  
+`; 
+
+export const LoginForm = styled.form`
+    width:250px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    
+    input{
+        width:100%;
+    }
+`;

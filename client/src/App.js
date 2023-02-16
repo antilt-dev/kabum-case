@@ -1,8 +1,12 @@
-import Login from "./Pages/Login";
+import Router from "./Routes/Router";
+import GlobalStyles from "./Styles/GlobalStyles";
 
 function App() {
   return (
-   <Login />
+    <>
+      <Router/>
+      <GlobalStyles/>
+    </>
   );
 }
 

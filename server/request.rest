@@ -37,7 +37,7 @@ auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05O
 ###
 GET http://localhost:3003/clients/detail
 Content-Type: application/json
-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0N2Y4YjU4LTk0ZDItNGQ5My1hNmMxLWU3ZTFkYTRhNTZhYyIsImlhdCI6MTY3NjQyNDE4NSwiZXhwIjoxNjc2NDI3Nzg1fQ.1J9iwK4SDRWjuk5JNX3ePYQuVw3UC4oCSgJPVxCb38Y
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjUwOTk1NSwiZXhwIjoxNjc2NTEzNTU1fQ.SZSkDj6v2K5z6z_GjaGvZIXaCNhp1EI7ppx_AczA0_c
 
 {
     "cpf":"22510171194"
@@ -48,3 +48,24 @@ DELETE http://localhost:3003/clients/address/88f79c15-0df9-428a-9620-c5d51beb15a
 auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0N2Y4YjU4LTk0ZDItNGQ5My1hNmMxLWU3ZTFkYTRhNTZhYyIsImlhdCI6MTY3NjQyNDE4NSwiZXhwIjoxNjc2NDI3Nzg1fQ.1J9iwK4SDRWjuk5JNX3ePYQuVw3UC4oCSgJPVxCb38Y
 
 ###
+PUT http://localhost:3003/clients/update/22510171194
+Content-Type: application/json
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjUxMjc4MywiZXhwIjoxNjc2NTE2MzgzfQ.yF08NBrzlSMvsKgswVtZm_RfC8kDPC7KEOcc4_s0TqA
+
+{
+    "rg":"1111233101",
+    "name":"carlos josé"
+}
+
+###
+PUT http://localhost:3003/clients/address/update/66822655-2e30-4dcc-8481-c1215dcd82c3
+Content-Type: application/json
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjUxMjc4MywiZXhwIjoxNjc2NTE2MzgzfQ.yF08NBrzlSMvsKgswVtZm_RfC8kDPC7KEOcc4_s0TqA
+
+{
+    "full_address":"Rua trevo, 182"
+}
+
+###
+GET http://localhost:3003/clients/address/22510171194
+auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjUxNDkwMywiZXhwIjoxNjc2NTE4NTAzfQ.wYdSW0A3eYxchZEdYj2K7pD-lmsHvNggfPfu_WmPL2c

@@ -1,36 +1,17 @@
-import React from "react";
-import {Container} from './styles';
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
-import Home from "../../pages/Home";
-import Login from "../../pages/Login";
-import Travels from "../../pages/Travels";
-import TravelsAdm from "../../pages/TravelsAdm";
-import NewTravel from "../../pages/NewTravel";
-import ErrorPage from "../../pages/ErrorPage";
-import TravelDetails from "../../pages/TravelDetails";
-import ApplyTravelPage from "../../pages/ApplyTravelPage";
+import styled from 'styled-components';
 
-
-
-
-const Router=()=>{
-  return (
-   <Container>
-      <BrowserRouter>
-        <Routes>
-            <Route index element = {<Home/>}/>
-            <Route path="/login" element ={<Login/>}/>
-            <Route path="/admin/new-travel" element ={<NewTravel/>}/>
-            <Route path="/travels" element ={<Travels/>}/>
-            <Route path="/admin/travels" element ={<TravelsAdm/>}/>
-            <Route path="/admin/travel-details/:id" element ={<TravelDetails/>}/>
-            <Route path="/reserve" element ={<ApplyTravelPage/>}/>
-            <Route path="*" element={<ErrorPage/>} />
-        </Routes>
-    </BrowserRouter>
+export const Container = styled.div`
+    width:100vw;
+    min-height:100vh;
     
-   </Container>
-  );
-} 
-
-export default Router;
+    background-color:rgba(0,0,0,.5);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    
+    
+    @media (max-width:600px) {
+        padding:0;
+    }
+`;
