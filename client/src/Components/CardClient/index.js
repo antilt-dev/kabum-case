@@ -3,7 +3,7 @@ import axios from "axios";
 import {Container, Personal, Addresses, Buttons, Address, Form} from './styles';
 import RowTable from '../Rowtable'
 import useRequestData from "../../Hooks/useRequestData";
-import { clientDetailURL, clientUpdateURL, deleteAddressURL, getAddressURL, getClientsURL, updateAddressURL } from "../../Constants/apiEndpointsURL";
+import { clientUpdateURL, deleteAddressURL, getAddressURL, getClientsURL, updateAddressURL } from "../../Constants/apiEndpointsURL";
 import { Box, FilledInput, FormControl, InputLabel, Modal } from "@mui/material";
 import ButtonPrimary from "../ButtonPrimary";
 import useForm from "../../Hooks/useForm";
@@ -35,7 +35,6 @@ const CardClient=(props)=>{
 
     const handleUpdateAddress = async (e)=>{
         e.preventDefault()
-
         try {
             await axios.put(updateAddressURL(identifier),form,headers)
             cleanInputs()
