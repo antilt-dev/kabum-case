@@ -1,5 +1,6 @@
 
 GET http://localhost:3003/clients/getAll
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjUyMjU2OCwiZXhwIjoxNjc2NTI2MTY4fQ.Oh3Ni0q9izriyrLx34RCm4uyFAOehw0buu8Jpc-ompw
 
 ###
 POST http://localhost:3003/login
@@ -69,3 +70,16 @@ auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05O
 ###
 GET http://localhost:3003/clients/address/22510171194
 auth:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjUxNDkwMywiZXhwIjoxNjc2NTE4NTAzfQ.wYdSW0A3eYxchZEdYj2K7pD-lmsHvNggfPfu_WmPL2c
+
+###
+POST  http://localhost:3003/clients/create
+Content-Type: application/json
+auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU5MjQxNWE3LTQwNjctNDFiZi05ODk3LTJjYjBkOWZkMjkzMyIsImlhdCI6MTY3NjUyMjU2OCwiZXhwIjoxNjc2NTI2MTY4fQ.Oh3Ni0q9izriyrLx34RCm4uyFAOehw0buu8Jpc-ompw
+
+{
+    "name":"Carlos Alberto",
+    "cpf":"03333995045",
+    "rg":"1111233154",
+    "birthdate":"1994-09-05",
+    "phone":"1132459520"
+}
