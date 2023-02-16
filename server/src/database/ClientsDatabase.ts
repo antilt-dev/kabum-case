@@ -21,7 +21,7 @@ export class ClientsDatabase extends BaseDatabase implements ClientsRepository{
     public async deleteByCpf(cpf:string):Promise<void>{
         await BaseDatabase.connection(this.TABLE_NAME)
         .delete()
-        .where({cpf})
+        .where({cpf:cpf})
     }
     public async updateByCpf(cpf:string,newValues:any):Promise<void>{
         await BaseDatabase.connection(this.TABLE_NAME)

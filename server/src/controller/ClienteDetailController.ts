@@ -9,7 +9,7 @@ export class ClientDetailController{
     ){}
     public getClient = async (req:Request,res:Response) =>{
         try {
-            const cpf = req.body.cpf
+            const cpf = req.params.cpf
             const token = req.headers.auth as string
             
             const clientDetails = await this.clientDetailBusiness.getClient(cpf,token)

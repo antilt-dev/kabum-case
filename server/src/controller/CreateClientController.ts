@@ -1,6 +1,5 @@
 import {Request,Response} from 'express'
 import { CreateClientBusiness } from '../business/CreateClientBusiness'
-import { ClientDTO } from '../models/ClientDTO'
 
 export class CreateClientController{
     constructor(

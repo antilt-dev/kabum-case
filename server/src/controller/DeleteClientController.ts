@@ -8,7 +8,7 @@ export class DeleteClienteController{
     ){}
     public deleteClient = async (req:Request,res:Response) =>{
         try {
-            const cpf = req.body.cpf
+            const cpf = req.params.cpf
             const token = req.headers.auth as string
             
             await this.deleteClientBusiness.deleteClient(cpf,token)
