@@ -12,6 +12,7 @@ const CardClient=(props)=>{
     const [changeData, setChangeData] = useState(false)
     const [data] = useRequestData(getAddressURL(props.cpf),changeData,props.token)
     const [modalOpenClient,setModalOpenClient] = useState(false)
+    const [modalOpenAddress,setModalOpenAddress] = useState(false)
     const {form,onChange,cleanInputs} = useForm({})
     const [identifier,setIdentifier] = useState("")
     
@@ -36,8 +37,10 @@ const CardClient=(props)=>{
         e.preventDefault()
 
         try {
-            console.log(identifier,form)
             await axios.put(clientUpdateURL(identifier),form,headers)
+            cleanInputs()
+            setModalOpenClient(false)
+            props.setChangeData(!props.changeData)
         } catch (error) {
             alert('Não foi possível atualizar o cliente!')
             console.log(error.message)
@@ -80,7 +83,7 @@ const CardClient=(props)=>{
         <Addresses>
             {renderAddress && renderAddress}
         </Addresses>
-
+{/* MODAL DE ATUALIZAÇÃO DAS INFORMAÇÕES DO CLIENTE  */}
         <Modal  
             open={modalOpenClient}
             onClose={()=>setModalOpenClient(false)}>
@@ -128,8 +131,60 @@ const CardClient=(props)=>{
                 </Form>
             </Box>
         </Modal>
+
+{/* MODAL DE ATUALIZAÇÃO DOS ENDEREÇOES */}
+
+        <Modal  
+            open={modalOpenAddress}
+            onClose={()=>setModalOpenAddress(false)}>
+            <Box sx={modalStyle}>
+                <Form>
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>Nome Completo</InputLabel>
+                        <FilledInput
+                            name="name"
+                            value={form.name}
+                            onChange={onChange}
+                        />
+                    </FormControl>   
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>RG (apenas números)</InputLabel>
+                        <FilledInput
+                            name="rg"
+                            value={form.rg}
+                            onChange={onChange}
+                        />
+                    </FormControl>  
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>Data de nascimento (yyyy-mm-dd)</InputLabel>
+                        <FilledInput
+                            name="birthdate"
+                            value={form.birthdate}
+                            onChange={onChange}
+                        />
+                    </FormControl>  
+                    <FormControl fullWidth  variant="filled">
+                        <InputLabel>Telefone (ex.: +5511989898989)</InputLabel>
+                        <FilledInput
+                            name="phone"
+                            value={form.phone}
+                            onChange={onChange}
+                    />
+                    </FormControl>
+                    <Buttons>
+                        <ButtonPrimary
+                            children="Enviar Alterações"
+                            type="submit"
+                            onClick={(event)=>handleUpdateClient(event)}
+                        /> 
+                    </Buttons>
+                </Form>
+            </Box>
+        </Modal>
    </Container>
    
+
+//    MODAL DE ATUALIZAÇÃO DOS ENDEREÇOS
    
   );
 }

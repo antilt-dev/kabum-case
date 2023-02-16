@@ -108,6 +108,8 @@ const Home=()=>{
                 phone={client.phone}
                 deleteClient={()=>{handleDeleteClient(client.cpf)}}
                 token={token}
+                setChangeData={setChageData}
+                changeData={changeData}
                 />
 
     })
@@ -139,7 +141,6 @@ const Home=()=>{
 
         <ClientsList>
             {renderClients && renderClients}
-            {/* <AddressCard onChange=" form="form" editor="edtor"/> */}
         </ClientsList>
 
         <Modal  
