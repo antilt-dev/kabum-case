@@ -11,6 +11,8 @@ export class UpdateClientController {
       const cpf = req.params.cpf;
       const newValues = req.body;
       const token = req.headers.auth as string
+
+      console.log(cpf,newValues)
       
       await this.updateClientBusiness.update(token,cpf,newValues)
 

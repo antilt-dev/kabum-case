@@ -25,8 +25,9 @@ export class ClientsDatabase extends BaseDatabase implements ClientsRepository{
     }
     public async updateByCpf(cpf:string,newValues:any):Promise<void>{
         await BaseDatabase.connection(this.TABLE_NAME)
-        .update(newValues)
         .where({cpf})
+        .update(newValues)
+        
     }
 
 }

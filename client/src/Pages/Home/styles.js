@@ -44,7 +44,7 @@ export const Title = styled.div`
         color:#FF4500;
     }
 `;
-export const Logout = styled.div`
+export const HeaderButton = styled.div`
     width:150px;
     max-width:20%;
     max-height:80%;
