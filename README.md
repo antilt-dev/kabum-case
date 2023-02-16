@@ -51,8 +51,7 @@ DB_PORT = 2206
 
 JWT_SECRET = palavra-secreta
 ```
-
-4 - Dentro da pasta principal, abra dois terminais.
+6 - Dentro da pasta principal, abra dois terminais.
 
   - terminal frontend:
   
@@ -63,9 +62,18 @@ JWT_SECRET = palavra-secreta
   - terminal backend:
   ``` 
   cd server/
+  npm run migrations
   npm run dev
   ```
   
   Agora você pode acessar o aplicativo em ***http://localhost:3003***
+  
+  ## LOGIN
+  
+  ### Para fazer login, você deve usar as seguintes credenciais:
+  
+  - E-mail: admin@kabum.com.br
+  - Password: Kabum2023@
+ 
   
   
