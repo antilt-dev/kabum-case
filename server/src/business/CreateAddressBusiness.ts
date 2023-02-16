@@ -35,11 +35,11 @@ export class CreateAddressBusiness{
             const address : AddressDTO = {
                 id,
                 client_cpf : newAddress.cpf,
-                country : newAddress.country,
-                state : newAddress.state,
-                city : newAddress.city,
+                country : newAddress.country.toUpperCase(),
+                state : newAddress.state.toUpperCase(),
+                city : newAddress.city.toUpperCase(),
                 zipcode : newAddress.zipcode,
-                full_address : newAddress.full_address
+                full_address : newAddress.full_address.toUpperCase()
             }
 
             await this.addressDatabase.create(address)

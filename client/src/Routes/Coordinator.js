@@ -1,3 +1,7 @@
 export const goHome = (navigate)=>{
-    navigate("/home")
+    navigate("/")
+}
+
+export const goLogin = (navigate)=>{
+    navigate("/login")
 }

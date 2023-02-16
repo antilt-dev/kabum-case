@@ -1,7 +1,8 @@
 import { BaseDatabase } from "./BaseDatabase";
 import { ClientDTO } from "../models/ClientDTO";
+import { ClientsRepository } from "../business/ClientsRepository";
 
-export class ClientsDatabase extends BaseDatabase{
+export class ClientsDatabase extends BaseDatabase implements ClientsRepository{
     TABLE_NAME = "clients"
 
     public async getAll():Promise<ClientDTO[]>{
@@ -22,9 +23,10 @@ export class ClientsDatabase extends BaseDatabase{
         .delete()
         .where({cpf})
     }
-    public async update(cpf:string,newValues:any):Promise<void>{
+    public async updateByCpf(cpf:string,newValues:any):Promise<void>{
         await BaseDatabase.connection(this.TABLE_NAME)
-        .update({newValues})
+        .update(newValues)
         .where({cpf})
     }
+
 }

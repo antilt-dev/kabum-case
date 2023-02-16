@@ -45,7 +45,7 @@ export abstract class BaseDatabase{
     protected async update(id:string,newValues:any):Promise<void>{
         await BaseDatabase.connection(this.TABLE_NAME)
         .where({id})
-        .update({newValues})
+        .update(newValues)
         
     }
 

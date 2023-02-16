@@ -1,14 +1,19 @@
 import { Authenticator } from "../services/Authenticator";
 import { CustomError } from "../services/CustomError";
+import { AddressRepository } from "./AddressRepository";
 import { ClientsRepository } from "./ClientsRepository";
 
-export class UpdateClientBusiness{
-    constructor(private clientsDatabase:ClientsRepository){}
+export class GetAddressesBusiness{
+    constructor(
+        private addressDatabase:AddressRepository,
+        private clientsDatabase:ClientsRepository
+        ){}
 
-    public update = async(token:string,cpf:string,newValues:any)=>{
+    public getAddresses = async(token:string,cpf:string)=>{
         let statusCode = 500
+
         try {
-             
+
             if(!token){
                 statusCode = 412
                 throw new CustomError(statusCode,'É necessário informar o token de acesso!')
@@ -33,8 +38,9 @@ export class UpdateClientBusiness{
                 throw new CustomError(statusCode,"Não foi encontrado nenhum cliente com este CPF.")
             }
 
-            await this.clientsDatabase.updateByCpf(cpf,newValues)
+            const addresses = await this.addressDatabase.getByCpf(cpf)
 
+            return addresses
         } catch (error:any) {
             throw new CustomError(error.statusCode || 400,error.message || error.sqlMessage)
         }

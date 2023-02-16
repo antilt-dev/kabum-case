@@ -3,7 +3,7 @@ import React from "react";
 import useForm from "../../Hooks/useForm";
 import {Addresses, Container, PersonalData} from './styles'
 
-const ClientDetails=()=>{
+const Client=()=>{
     const [data,isLoading] = useRequestData(urlGetTravels);
 
     const {form,onChange,cleanInputs} = useForm(data)

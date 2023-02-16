@@ -20,7 +20,7 @@ export class LoginBusiness{
                 throw new CustomError(statusCode,'É necessário informar a senha!')
             }
     
-            let admin:AdminDTO[] = await this.adminsDatabase.getByEmail(email)
+            let admin:AdminDTO[] = await this.adminsDatabase.getByEmail(email.toLowerCase())
     
             if(!admin || admin.length < 1){
                 statusCode = 404
